@@ -15,7 +15,20 @@
     "type": "git",
     "url": "git+https://github.com/EnderKaran/ek-viewport.git"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "responsive",
+    "viewport",
+    "media-query",
+    "hook",
+    "ssr",
+    "nextjs",
+    "tailwind",
+    "breakpoint",
+    "typescript",
+    "mobile-first",
+    "adaptive"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
