@@ -1,6 +1,6 @@
 {
   "name": "ek-viewport",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "files": [
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsup",
     "test": "vitest",
-    "dev": "tsup --watch" 
+    "dev": "tsup --watch"
   },
   "repository": {
     "type": "git",
