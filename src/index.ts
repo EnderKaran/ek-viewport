@@ -1,6 +1,7 @@
 export { useBreakpoint } from './hooks/useBreakpoint';
+export { useMediaQuery } from './hooks/useMediaQuery'; 
+export { useOrientation } from './hooks/useOrientation';
 
-//bileşenler
 export { Show } from './components/Show';
 export { Hide } from './components/Hide';
 
