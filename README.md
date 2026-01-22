@@ -12,10 +12,10 @@
 
 ##  Features
 
-- 🚀 **Zero Dependencies:** Tiny bundle size.
-- 💧 **SSR Safe:** Works perfectly with Next.js & Remix (no hydration errors).
-- 🔒 **Type Safe:** Written in TypeScript with full type definitions.
-- 🎨 **Tailwind Compatible:** Uses standard Tailwind CSS breakpoints.
+-  **Zero Dependencies:** Tiny bundle size.
+-  **SSR Safe:** Works perfectly with Next.js & Remix (no hydration errors).
+-  **Type Safe:** Written in TypeScript with full type definitions.
+-  **Tailwind Compatible:** Uses standard Tailwind CSS breakpoints.
 
 ---
 
