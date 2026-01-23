@@ -1,6 +1,6 @@
 {
   "name": "ek-viewport",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Lightweight, type-safe, and SSR-friendly responsive utilities for React.",
   "author": "Ender Karan",
   "license": "MIT",
