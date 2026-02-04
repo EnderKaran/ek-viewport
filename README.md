@@ -2,6 +2,7 @@
 
 Lightweight, type-safe, and SSR-friendly responsive utilities for React. Focuses on performance and developer experience.
 
+[![Downloads](https://img.shields.io/npm/dt/ek-viewport.svg)](https://www.npmjs.com/package/ek-viewport)
 [![npm version](https://img.shields.io/npm/v/ek-viewport.svg)](https://www.npmjs.com/package/ek-viewport)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
