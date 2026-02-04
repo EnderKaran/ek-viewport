@@ -9,7 +9,7 @@ Lightweight, type-safe, and SSR-friendly responsive utilities for React. Focuses
 
 ---
 
-## ✨ Features
+## Features
 
 - **SSR Safe:** Works perfectly with Next.js & Remix (no hydration errors)
 - **Customizable:** Use your own breakpoint values via ViewportProvider
@@ -20,7 +20,7 @@ Lightweight, type-safe, and SSR-friendly responsive utilities for React. Focuses
 
 ---
 
-## 📦 Installation
+## Installation
 
 ```bash
 npm install ek-viewport
@@ -32,7 +32,7 @@ pnpm add ek-viewport
 
 ---
 
-## 🚀 Setup (Optional Custom Config)
+## Setup (Optional Custom Config)
 
 By default, **ek-viewport** uses standard Tailwind CSS breakpoints. You can customize them using the `ViewportProvider`.
 
@@ -53,7 +53,7 @@ const App = () => (
 
 ---
 
-## 💡 Usage
+##  Usage
 
 ### 1. Basic Hook: `useBreakpoint`
 
@@ -138,7 +138,7 @@ const MyComponent = () => {
 
 ---
 
-## 🐛 Developer Experience (Debug Tool)
+## Developer Experience (Debug Tool)
 
 Stop guessing which breakpoint is active. Drop the `DebugOverlay` at the root of your app during development.
 
@@ -155,7 +155,7 @@ const App = () => (
 
 ---
 
-## 📐 Default Breakpoints
+## Default Breakpoints
 
 | Key  | Min-Width |
 |------|-----------|
@@ -173,7 +173,7 @@ MIT © [Your Name/Organization]
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues and feature requests are welcome!
 
