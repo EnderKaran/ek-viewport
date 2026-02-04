@@ -1,28 +1,26 @@
 # ek-viewport
 
-Lightweight, type-safe, and SSR-friendly responsive utilities for React.
-
-**Part of Ender's Starter Kit.**
+Lightweight, type-safe, and SSR-friendly responsive utilities for React. Focuses on performance and developer experience.
 
 [![npm version](https://img.shields.io/npm/v/ek-viewport.svg)](https://www.npmjs.com/package/ek-viewport)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**ek-viewport** solves the "Hydration Mismatch" problem in Next.js/SSR apps while providing an easy-to-use API for handling responsive logic.
+**ek-viewport** solves the "Hydration Mismatch" problem in Next.js/SSR apps while providing a declarative API for handling responsive logic.
 
 ---
 
-## Features
+## ✨ Features
 
-- **Zero Dependencies:** Tiny bundle size.
-- **SSR Safe:** Works perfectly with Next.js & Remix (no hydration errors).
-- **Type Safe:** Written in TypeScript with full type definitions.
-- **Tailwind Compatible:** Uses standard Tailwind CSS breakpoints.
-- **Orientation Detection:** Detect landscape/portrait modes easily.
-- **Custom Queries:** Support for arbitrary media queries.
+- **SSR Safe:** Works perfectly with Next.js & Remix (no hydration errors)
+- **Customizable:** Use your own breakpoint values via ViewportProvider
+- **Sensors:** Track scroll direction, orientation, and window size
+- **Debug Tool:** Built-in overlay to see active breakpoints in real-time
+- **Zero Dependencies:** Keeps your bundle size minimal
+- **Type Safe:** Full TypeScript support for all hooks and components
 
 ---
 
-## Installation
+## 📦 Installation
 
 ```bash
 npm install ek-viewport
@@ -34,105 +32,153 @@ pnpm add ek-viewport
 
 ---
 
-## Usage
+## 🚀 Setup (Optional Custom Config)
 
-### 1. The Hook: `useBreakpoint`
+By default, **ek-viewport** uses standard Tailwind CSS breakpoints. You can customize them using the `ViewportProvider`.
 
-Perfect for logic-based responsiveness.
+```tsx
+import { ViewportProvider } from 'ek-viewport';
+
+const customBreakpoints = {
+  md: 800,
+  lg: 1100
+};
+
+const App = () => (
+  <ViewportProvider breakpoints={customBreakpoints}>
+    <YourContent />
+  </ViewportProvider>
+);
+```
+
+---
+
+## 💡 Usage
+
+### 1. Basic Hook: `useBreakpoint`
+
+Returns `true` if the viewport is above the specified breakpoint.
 
 ```tsx
 import { useBreakpoint } from 'ek-viewport';
 
 const MyComponent = () => {
-  // Returns true if screen width is >= 768px
-  const isMd = useBreakpoint('md'); 
+  const isDesktop = useBreakpoint('lg'); 
 
-  return (
-    <div>
-      {isMd ? "Desktop View" : "Mobile View"}
-    </div>
-  );
+  return <div>{isDesktop ? "Desktop View" : "Mobile View"}</div>;
 };
 ```
 
-### 2. The Components: `Show` & `Hide`
+### 2. Declarative Components: `Show` & `Hide`
 
-Perfect for clean JSX without cluttering your code with ternary operators.
+Manage layouts without complex ternary operators.
 
 ```tsx
 import { Show, Hide } from 'ek-viewport';
 
-const Header = () => {
-  return (
-    <nav>
-      <Logo />
-      
-      {/* Only render on Large screens (1024px and up) */}
-      <Show above="lg">
-        <DesktopMenu />
-      </Show>
+const Navbar = () => (
+  <nav>
+    <Logo />
+    <Show above="md">
+      <DesktopMenu />
+    </Show>
+    <Hide above="md">
+      <MobileMenu />
+    </Hide>
+  </nav>
+);
+```
 
-      {/* Hide on Large screens (Show only on mobile/tablet) */}
-      <Hide above="lg">
-        <HamburgerIcon />
-      </Hide>
-    </nav>
+### 3. Sensors & Utilities
+
+#### `useScrollDirection`
+
+Detects if the user is scrolling `'up'` or `'down'`.
+
+```tsx
+import { useScrollDirection } from 'ek-viewport';
+
+const Header = () => {
+  const direction = useScrollDirection();
+  return (
+    <header className={direction === 'down' ? 'hidden' : 'visible'}>
+      ...
+    </header>
   );
 };
 ```
 
-### 3. Advanced Hooks (New in v1.1.0)
+#### `useWindowSize`
 
-#### `useMediaQuery`
-
-For custom CSS media queries.
+Track exact pixel dimensions.
 
 ```tsx
-import { useMediaQuery } from 'ek-viewport';
+import { useWindowSize } from 'ek-viewport';
 
 const MyComponent = () => {
-  // Custom query support
-  const isRetina = useMediaQuery('(min-resolution: 2dppx)');
-  const isTall = useMediaQuery('(min-height: 800px)');
-
-  return <div>{isTall ? "Tall Screen" : "Short Screen"}</div>;
+  const { width, height } = useWindowSize();
+  
+  return <div>Window: {width} x {height}</div>;
 };
 ```
 
 #### `useOrientation`
 
-Detect if the device is in portrait or landscape mode.
+Detect landscape or portrait mode.
 
 ```tsx
 import { useOrientation } from 'ek-viewport';
 
-const GameCanvas = () => {
-  const { mode, isPortrait, isLandscape } = useOrientation();
-
-  if (isPortrait) {
-    return <div>Please rotate your device to play! 🔄</div>;
-  }
-
-  return <Game />;
+const MyComponent = () => {
+  const { isLandscape } = useOrientation();
+  
+  return <div>{isLandscape ? 'Landscape' : 'Portrait'}</div>;
 };
 ```
 
 ---
 
-## Breakpoints
+## 🐛 Developer Experience (Debug Tool)
 
-Based on standard Tailwind CSS values:
+Stop guessing which breakpoint is active. Drop the `DebugOverlay` at the root of your app during development.
 
-| Key  | Min-Width |
-|------|-----------|
-| `sm` | 640px     |
-| `md` | 768px     |
-| `lg` | 1024px    |
-| `xl` | 1280px    |
-| `2xl`| 1536px    |
+```tsx
+import { DebugOverlay } from 'ek-viewport';
+
+const App = () => (
+  <>
+    <DebugOverlay />
+    <YourContent />
+  </>
+);
+```
 
 ---
 
-## License
+## 📐 Default Breakpoints
 
-MIT © Ender
+| Key  | Min-Width |
+|------|-----------|
+| sm   | 640px     |
+| md   | 768px     |
+| lg   | 1024px    |
+| xl   | 1280px    |
+| 2xl  | 1536px    |
+
+---
+
+## 📄 License
+
+MIT © [Your Name/Organization]
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+---
+
+## ⭐ Show your support
+
+Give a ⭐️ if this project helped you!
